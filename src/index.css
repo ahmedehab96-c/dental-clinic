@@ -1,0 +1,149 @@
+@import "tailwindcss";
+
+@theme {
+  /* Typography */
+  --font-sans: "Inter", "Cairo", system-ui, -apple-system, sans-serif;
+  --font-heading: "Plus Jakarta Sans", "Cairo", system-ui, -apple-system, sans-serif;
+  --font-arabic: "Cairo", "Inter", system-ui, -apple-system, sans-serif;
+
+  /* Brand — medical blue */
+  --color-primary-50: #eef6ff;
+  --color-primary-100: #d9ecff;
+  --color-primary-200: #b8dcff;
+  --color-primary-300: #86c4ff;
+  --color-primary-400: #4da3ff;
+  --color-primary-500: #0f96bd;
+  --color-primary-600: #087ea4;
+  --color-primary-700: #066a87;
+  --color-primary-800: #0d3f9c;
+  --color-primary-900: #0f3679;
+  --color-primary-950: #0a1f49;
+
+  /* Accent — teal / cyan */
+  --color-accent-50: #ecfeff;
+  --color-accent-100: #cffafe;
+  --color-accent-200: #a4f2fb;
+  --color-accent-300: #67e6f5;
+  --color-accent-400: #2ccfe3;
+  --color-accent-500: #22b8c7;
+  --color-accent-600: #0c8fa6;
+  --color-accent-700: #0f7387;
+  --color-accent-800: #145d6e;
+  --color-accent-900: #154e5d;
+
+  /* Neutrals / ink */
+  --color-ink-50: #f6f8fb;
+  --color-ink-100: #eceff4;
+  --color-ink-200: #d9dfe8;
+  --color-ink-300: #b7c1d1;
+  --color-ink-400: #8b98af;
+  --color-ink-500: #647089;
+  --color-ink-600: #4a5570;
+  --color-ink-700: #37415a;
+  --color-ink-800: #232b40;
+  --color-ink-900: #123b4a;
+  --color-ink-950: #0c2836;
+
+  /* Elevation */
+  --shadow-soft: 0 10px 30px -10px rgba(18, 59, 74, 0.15);
+  --shadow-medium: 0 20px 50px -15px rgba(18, 59, 74, 0.22);
+  --shadow-glow: 0 0 60px -10px rgba(34, 184, 199, 0.35);
+
+  --radius-2xl: 1.75rem;
+  --radius-3xl: 2.25rem;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  html[dir="rtl"] body {
+    font-family: var(--font-arabic);
+  }
+
+  html[dir="ltr"] body {
+    font-family: var(--font-sans);
+  }
+
+  body {
+    @apply bg-white text-ink-700 antialiased;
+  }
+
+  html[dir="rtl"] h1,
+  html[dir="rtl"] h2,
+  html[dir="rtl"] h3,
+  html[dir="rtl"] h4,
+  html[dir="rtl"] .font-heading {
+    font-family: var(--font-arabic);
+  }
+
+  html[dir="ltr"] h1,
+  html[dir="ltr"] h2,
+  html[dir="ltr"] h3,
+  html[dir="ltr"] h4,
+  html[dir="ltr"] .font-heading {
+    font-family: var(--font-heading);
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply text-ink-900 tracking-tight;
+  }
+
+  ::selection {
+    @apply bg-accent-200 text-ink-900;
+  }
+}
+
+@layer utilities {
+  .glass {
+    background: rgba(255, 255, 255, 0.65);
+    backdrop-filter: blur(16px) saturate(160%);
+    -webkit-backdrop-filter: blur(16px) saturate(160%);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+  }
+
+  .glass-dark {
+    background: rgba(11, 20, 41, 0.55);
+    backdrop-filter: blur(16px) saturate(160%);
+    -webkit-backdrop-filter: blur(16px) saturate(160%);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .text-gradient {
+    background: linear-gradient(90deg, var(--color-primary-600), var(--color-accent-500));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .bg-medical-gradient {
+    background: radial-gradient(120% 120% at 100% 0%, #eef8fa 0%, transparent 55%),
+      radial-gradient(120% 120% at 0% 100%, #f7fbfc 0%, transparent 55%),
+      #ffffff;
+  }
+
+  .shape-blob-1 {
+    border-radius: 63% 37% 54% 46% / 55% 48% 52% 45%;
+  }
+
+  .container-app {
+    @apply mx-auto w-full max-w-[1320px] px-5 sm:px-8 lg:px-10;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
